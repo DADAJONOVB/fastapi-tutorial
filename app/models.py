@@ -17,6 +17,8 @@ class Blog(ormar.Model):
     is_active: bool = ormar.Boolean(default=True)
     author: Optional[User] = ormar.ForeignKey(User)
 
+
+
 class Comment(ormar.Model):
     class Meta(MainMeta):
         pass

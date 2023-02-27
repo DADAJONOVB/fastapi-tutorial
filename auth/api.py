@@ -28,7 +28,7 @@ async def register_user(data:UserIn):
 
 @auth_api.post('/user/login/')
 async def login(user:UserIn):
-    data = {}
+    data = {}   
     try:
         auth =  await User.objects.get(username=user.username)
         if pbkdf2_sha256.verify(user.password, auth.password):

@@ -12,7 +12,7 @@ class Blog(BaseModel):
 
 
 class BlogIn(BaseModel):
-    titile:str
+    title:str
     body:str
 
 
