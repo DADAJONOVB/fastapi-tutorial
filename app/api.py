@@ -42,8 +42,10 @@ async def create_blog(
 
 @app_router.post('/comment/create/')
 async def create_comment(
-    comment:CommentIn
+    comment:CommentIn,
+    credentials: JwtAuthorizationCredentials = Security(access_security)
     ):
     blog = await Blog.objects.get(id=comment.blog_id)    
-    await Comment.objects.create(blog=blog, body=comment.body)
+    user = await User.objects.get(username=credentials['username'])
+    await Comment.objects.create(blog=blog, body=comment.body, user=user)
     return True

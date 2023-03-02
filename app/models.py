@@ -27,3 +27,4 @@ class Comment(ormar.Model):
     body: str = ormar.Text()
     blog: Optional[Blog] = ormar.ForeignKey(Blog)
     created: datetime.datetime = ormar.DateTime(default=datetime.datetime.now)
+    author: Optional[User] = ormar.ForeignKey(User)
